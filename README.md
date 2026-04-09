@@ -32,7 +32,7 @@ Complete these outside this repo as needed for your environment:
 
 6. **Pipelines (optional)** — After MinIO is healthy, the `access` Application has synced (ESO running, `minio-dspa-connection` reconciled in `demo`), and the `pipelines` bucket exists, **Sync** `pipelines-server` (see [rhoai-distributed README](https://github.com/redhat-ai-americas/rhoai-distributed/blob/main/README.md)).
 
-7. **Ray** — KubeRay is **Managed** by default in the base `default-dsc`. Optionally **Sync** `ray-dsc-patch` if you only want to touch the Ray stanza.
+7. **Ray** — KubeRay is **Managed** by default in the base `default-dsc`. No separate action needed.
 
 ### Customizing `default-dsc` and DSPA after install
 
@@ -48,11 +48,11 @@ The `pipelines-server` Application does the same for **`DataSciencePipelinesAppl
 | `jobset-operator-subscription`, `kueue-cluster-default`, `kueue-localqueue-demo` | Automated |
 | `model-base-resources`, `oss-vllm-runtime`, hardware profile apps | Automated |
 | `access-operator`, `access` | Automated |
-| `minio`, `jobset-operator-instance`, `ray-dsc-patch`, `pipelines-server` | **Manual sync** |
+| `minio`, `jobset-operator-instance`, `pipelines-server` | **Manual sync** |
 
 ## Sync waves (summary)
 
-Lower waves run first: dependencies and GPU operator (0) → NFD and RHOAI operator (1) → DSC (2; base includes Ray, Trainer v2, and managed pipelines component) → JobSet subscription (3) → MinIO and Kueue cluster queue (4) → ESO operator (`access-operator`, wave 5, automated) → ESO instance + pipeline credentials (`access`, wave 6, automated) → optional Ray patch (5, manual) → model namespace and runtime (8–9) → Kueue `LocalQueue` in `demo` (9) → hardware profiles (10) → optional pipelines server (12, manual). **Sync** `jobset-operator-instance` manually once the JobSet Operator CSV is installed.
+Lower waves run first: dependencies and GPU operator (0) → NFD and RHOAI operator (1) → DSC (2; base includes Ray, Trainer v2, and managed pipelines component) → JobSet subscription (3) → MinIO and Kueue cluster queue (4) → ESO operator (`access-operator`, wave 5, automated) → ESO instance + pipeline credentials (`access`, wave 6, automated) → model namespace and runtime (8–9) → Kueue `LocalQueue` in `demo` (9) → hardware profiles (10) → optional pipelines server (12, manual). **Sync** `jobset-operator-instance` manually once the JobSet Operator CSV is installed.
 
 ## Related repositories
 
