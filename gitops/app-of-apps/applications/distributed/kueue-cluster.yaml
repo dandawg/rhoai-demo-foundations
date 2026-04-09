@@ -11,7 +11,7 @@ metadata:
 spec:
   project: rhoai-distributed
   source:
-    repoURL: https://github.com/redhat-ai-americas/rhoai-distributed.git
+    repoURL: https://github.com/dandawg/rhoai-distributed.git
     targetRevision: main
     path: platform/kueue/cluster
   destination:

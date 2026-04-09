@@ -11,7 +11,7 @@ metadata:
 spec:
   project: rhoai-infrastructure
   source:
-    repoURL: https://github.com/redhat-ai-americas/rhoai-deploy.git
+    repoURL: https://github.com/dandawg/rhoai-deploy.git
     targetRevision: main
     path: platform/storage/minio
   destination:

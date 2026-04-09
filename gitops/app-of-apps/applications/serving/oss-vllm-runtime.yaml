@@ -11,7 +11,7 @@ metadata:
 spec:
   project: rhoai-serving
   source:
-    repoURL: https://github.com/redhat-ai-americas/rhoai-model-serving.git
+    repoURL: https://github.com/dandawg/rhoai-model-serving.git
     targetRevision: main
     path: platform/models/serving/shared/oss-vllm-runtime
   destination:
