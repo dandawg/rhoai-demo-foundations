@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kueue-localqueue-demo
+  namespace: openshift-gitops
+  labels:
+    app.kubernetes.io/name: kueue-localqueue-demo
+    app.kubernetes.io/part-of: rhoai-demo-foundations
+  annotations:
+    argocd.argoproj.io/sync-wave: "9"
+spec:
+  project: rhoai-distributed
+  source:
+    repoURL: https://github.com/redhat-ai-americas/rhoai-distributed.git
+    targetRevision: main
+    path: platform/kueue/local-demo
+  destination:
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+      - SkipDryRunOnMissingResource=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 30s
+        factor: 2
+        maxDuration: 10m

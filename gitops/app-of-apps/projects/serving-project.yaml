@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: rhoai-serving
+  namespace: openshift-gitops
+  labels:
+    app.kubernetes.io/part-of: rhoai-demo-foundations
+spec:
+  description: Model serving base, runtimes, and hardware profiles (no specific models)
+  destinations:
+    - namespace: "*"
+      server: https://kubernetes.default.svc
+  sourceRepos:
+    - https://github.com/redhat-ai-americas/rhoai-model-serving.git
+    - https://github.com/redhat-ai-americas/rhoai-demo-foundations.git
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  namespaceResourceWhitelist:
+    - group: "*"
+      kind: "*"

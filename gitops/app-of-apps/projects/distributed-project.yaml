@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: rhoai-distributed
+  namespace: openshift-gitops
+  labels:
+    app.kubernetes.io/part-of: rhoai-demo-foundations
+spec:
+  description: Distributed workloads (JobSet, Kueue defaults, optional Ray and pipelines server)
+  destinations:
+    - namespace: "*"
+      server: https://kubernetes.default.svc
+  sourceRepos:
+    - https://github.com/redhat-ai-americas/rhoai-distributed.git
+    - https://github.com/redhat-ai-americas/rhoai-demo-foundations.git
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  namespaceResourceWhitelist:
+    - group: "*"
+      kind: "*"
