@@ -16,6 +16,7 @@ spec:
     path: platform/pipelines
   destination:
     server: https://kubernetes.default.svc
+    namespace: demo
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
@@ -27,3 +28,11 @@ spec:
         duration: 30s
         factor: 2
         maxDuration: 10m
+  # Live DSPA spec changes (or delete + leave absent until you sync) are not drift.
+  # Sync to re-apply dspa.yaml from Git.
+  ignoreDifferences:
+    - group: datasciencepipelinesapplications.opendatahub.io
+      kind: DataSciencePipelinesApplication
+      name: dspa
+      jsonPointers:
+        - /spec

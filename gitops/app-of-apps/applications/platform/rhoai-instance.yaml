@@ -30,9 +30,11 @@ spec:
         duration: 30s
         factor: 2
         maxDuration: 10m
+  # After first sync, live edits to default-dsc spec are not treated as drift (selfHeal
+  # will not revert). Sync the Application to re-apply Git and reset.
   ignoreDifferences:
     - group: datasciencecluster.opendatahub.io
       kind: DataScienceCluster
+      name: default-dsc
       jsonPointers:
-        - /spec/components/*/devFlags
-        - /spec/components/ray
+        - /spec
