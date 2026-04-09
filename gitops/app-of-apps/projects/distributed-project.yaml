@@ -11,8 +11,8 @@ spec:
     - namespace: "*"
       server: https://kubernetes.default.svc
   sourceRepos:
-    - https://github.com/redhat-ai-americas/rhoai-distributed.git
-    - https://github.com/redhat-ai-americas/rhoai-demo-foundations.git
+    - https://github.com/dandawg/rhoai-distributed.git
+    - https://github.com/dandawg/rhoai-demo-foundations.git
   clusterResourceWhitelist:
     - group: "*"
       kind: "*"
