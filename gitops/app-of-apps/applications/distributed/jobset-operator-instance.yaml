@@ -17,6 +17,8 @@ spec:
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
+    automated:
+      selfHeal: false
     syncOptions:
       - ServerSideApply=true
       - SkipDryRunOnMissingResource=true
